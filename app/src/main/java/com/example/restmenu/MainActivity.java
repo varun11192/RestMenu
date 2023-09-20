@@ -8,10 +8,10 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.restmenu.Adapters.MainCategoryAdapter;
+import com.example.restmenu.Interfaces.ApiService;
 import com.example.restmenu.Models.CategoryModel;
 import com.example.restmenu.Models.YourResponseModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
 
-    List<Item> menuList;
+    List<ProductItem> menuList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

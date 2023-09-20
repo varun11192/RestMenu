@@ -1,12 +1,12 @@
 package com.example.restmenu;
 
-public class Item {
+public class ProductItem {
 
     private String dishName;
     private String price;
     private boolean expanded;
 
-    public Item(String dishName, String price) {
+    public ProductItem(String dishName, String price) {
         this.dishName = dishName;
         this.price = price;
 

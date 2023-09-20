@@ -12,12 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MovieVH> {
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MovieVH> {
 
     private static final String TAG = "MenuAdapter";
-    List<Item> menuList;
+    List<ProductItem> menuList;
 
-    public MenuAdapter(List<Item> menuList) {
+    public ProductAdapter(List<ProductItem> menuList) {
         this.menuList = menuList;
     }
 
@@ -31,7 +31,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MovieVH> {
     @Override
     public void onBindViewHolder(@NonNull MovieVH holder, int position) {
 
-        Item item = menuList.get(position);
+        ProductItem item = menuList.get(position);
         holder.dishNameTextView.setText(item.getDishName());
 
         holder.priceTextView.setText(item.getPrice());
@@ -69,7 +69,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MovieVH> {
                 @Override
                 public void onClick(View view) {
 
-                    Item item = menuList.get(getAdapterPosition());
+                    ProductItem item = menuList.get(getAdapterPosition());
                     item.setExpanded(!item.isExpanded());
                     notifyItemChanged(getAdapterPosition());
 

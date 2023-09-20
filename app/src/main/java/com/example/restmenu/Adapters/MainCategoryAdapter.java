@@ -9,10 +9,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.restmenu.Item;
 import com.example.restmenu.Models.CategoryModel;
+import com.example.restmenu.Models.SubcategoryModel;
 import com.example.restmenu.R;
 
 import java.util.List;
@@ -20,8 +21,7 @@ import java.util.List;
 public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapter.MainCategoryViewHolder> {
 
     static List<CategoryModel> mainCategories;
-
-
+    static List<SubcategoryModel> subcategoryList;
     private LayoutInflater inflater;
     private Context context;
 
@@ -41,8 +41,13 @@ public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapte
     @Override
     public void onBindViewHolder(@NonNull MainCategoryViewHolder holder, int position) {
         CategoryModel categoryModel = mainCategories.get(position);
+        SubcategoryAdapter subcategoryAdapter = new SubcategoryAdapter(subcategoryList, context);
 
         holder.categoryNameTextView.setText(categoryModel.getCategoryName());
+
+        holder.subCatRv.setLayoutManager(new LinearLayoutManager(context));
+        holder.subCatRv.setAdapter(subcategoryAdapter);
+        subcategoryAdapter.notifyDataSetChanged();
 
         boolean isExpanded = mainCategories.get(position).isExpanded();
         holder.expandableLayout.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
@@ -64,6 +69,7 @@ public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapte
         TextView categoryNameTextView;
         ConstraintLayout expandableLayout;
         ImageButton dropImg;
+        RecyclerView subCatRv;
 
 
         public MainCategoryViewHolder(@NonNull View itemView) {
@@ -71,6 +77,7 @@ public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapte
             categoryNameTextView = itemView.findViewById(R.id.categoryName);
             expandableLayout = itemView.findViewById(R.id.expandableLayoutcl);
             dropImg = itemView.findViewById(R.id.dropImgcl);
+            subCatRv = itemView.findViewById(R.id.subCategoryRvcl);
             dropImg.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

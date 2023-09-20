@@ -26,7 +26,7 @@ public class SubcategoryAdapter extends RecyclerView.Adapter<SubcategoryAdapter.
 
     public SubcategoryAdapter(List<SubcategoryModel> subcategoryModelList, Context context) {
         this.subcategoryModelList = subcategoryModelList;
-        this.inflater = inflater;
+        this.inflater = LayoutInflater.from(context);
         this.context = context;
     }
 

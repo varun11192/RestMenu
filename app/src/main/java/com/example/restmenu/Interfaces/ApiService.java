@@ -1,4 +1,4 @@
-package com.example.restmenu;
+package com.example.restmenu.Interfaces;
 
 import com.example.restmenu.Models.CategoryModel;
 import com.example.restmenu.Models.YourResponseModel;
