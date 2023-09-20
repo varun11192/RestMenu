@@ -1,10 +1,12 @@
 package com.example.restmenu.Adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +18,7 @@ import com.example.restmenu.Models.CategoryModel;
 import com.example.restmenu.Models.SubcategoryModel;
 import com.example.restmenu.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapter.MainCategoryViewHolder> {
@@ -41,17 +44,38 @@ public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapte
     @Override
     public void onBindViewHolder(@NonNull MainCategoryViewHolder holder, int position) {
         CategoryModel categoryModel = mainCategories.get(position);
-        SubcategoryAdapter subcategoryAdapter = new SubcategoryAdapter(subcategoryList, context);
+        List<SubcategoryModel> subcategoryForCategories = categoryModel.getSubcategoryList();
+        if(categoryModel.getSubcategoryList()!= null) {
+            Log.d("testList", categoryModel.getSubcategoryList().toString());
+        }
+        if (categoryModel.isHasSubCategory()){
+        SubcategoryAdapter subcategoryAdapter = new SubcategoryAdapter(subcategoryForCategories, context);
+        holder.subCatRv.setLayoutManager(new LinearLayoutManager(context));
+        holder.subCatRv.setAdapter(subcategoryAdapter);
+        } else {
+            List<SubcategoryModel> emptyList = new ArrayList<>();
+            SubcategoryAdapter subcategoryAdapter = new SubcategoryAdapter(emptyList, context);
+            holder.subCatRv.setLayoutManager(new LinearLayoutManager(context));
+            holder.subCatRv.setAdapter(subcategoryAdapter);
+        }
+
 
         holder.categoryNameTextView.setText(categoryModel.getCategoryName());
 
-        holder.subCatRv.setLayoutManager(new LinearLayoutManager(context));
-        holder.subCatRv.setAdapter(subcategoryAdapter);
-        subcategoryAdapter.notifyDataSetChanged();
 
         boolean isExpanded = mainCategories.get(position).isExpanded();
         holder.expandableLayout.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                CategoryModel categoryModel = mainCategories.get(position);
+                categoryModel.setExpanded(!categoryModel.isExpanded());
+                notifyItemChanged(position);
+
+            }
+        });
 
     }
 
@@ -68,7 +92,6 @@ public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapte
     class MainCategoryViewHolder extends RecyclerView.ViewHolder {
         TextView categoryNameTextView;
         ConstraintLayout expandableLayout;
-        ImageButton dropImg;
         RecyclerView subCatRv;
 
 
@@ -76,18 +99,8 @@ public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapte
             super(itemView);
             categoryNameTextView = itemView.findViewById(R.id.categoryName);
             expandableLayout = itemView.findViewById(R.id.expandableLayoutcl);
-            dropImg = itemView.findViewById(R.id.dropImgcl);
             subCatRv = itemView.findViewById(R.id.subCategoryRvcl);
-            dropImg.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
 
-                    CategoryModel categoryModel = mainCategories.get(getAdapterPosition());
-                    categoryModel.setExpanded(!categoryModel.isExpanded());
-                    notifyItemChanged(getAdapterPosition());
-
-                }
-            });
 
 
         }

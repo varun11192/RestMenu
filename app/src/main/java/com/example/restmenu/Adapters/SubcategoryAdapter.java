@@ -1,14 +1,17 @@
 package com.example.restmenu.Adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.restmenu.Models.CategoryModel;
@@ -40,11 +43,31 @@ public class SubcategoryAdapter extends RecyclerView.Adapter<SubcategoryAdapter.
     @Override
     public void onBindViewHolder(@NonNull SubcategoryAdapter.SubcategoryViewHolder holder, int position) {
         SubcategoryModel subcategoryModel = subcategoryModelList.get(position);
+        List<ProductModel> productList = subcategoryModel.getProductList();
 
-        holder.SubCategoryTv.setText(SubcategoryModel.getSubcategoryName());
+        Log.d("Subcategories", "Subcategories for " + productList.toString());
+
+        ProductAdapter productAdapter = new ProductAdapter(productList);
+        holder.productRv.setLayoutManager(new LinearLayoutManager(context));
+        holder.productRv.setAdapter(productAdapter);
+
+        holder.SubCategoryTv.setText(subcategoryModel.getSubcategoryName());
 
         boolean isExpanded = subcategoryModelList.get(position).isExpanded();
         holder.expandableLayoutsl.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                int adapterPosition = holder.getAdapterPosition(); // Get the adapter position
+                if (adapterPosition != RecyclerView.NO_POSITION) {
+                    SubcategoryModel categoryModel = subcategoryModelList.get(adapterPosition);
+                    categoryModel.setExpanded(!categoryModel.isExpanded());
+                    notifyItemChanged(adapterPosition);
+                }
+            }
+        });
     }
 
     @Override
@@ -56,24 +79,13 @@ public class SubcategoryAdapter extends RecyclerView.Adapter<SubcategoryAdapter.
 
         TextView SubCategoryTv;
         ConstraintLayout expandableLayoutsl;
-        ImageButton dropImgsl;
+        RecyclerView productRv;
         public SubcategoryViewHolder(@NonNull View itemView) {
             super(itemView);
 
             SubCategoryTv = itemView.findViewById(R.id.subCategoryName);
             expandableLayoutsl = itemView.findViewById(R.id.expandableLayoutsl);
-            dropImgsl = itemView.findViewById(R.id.dropImgsl);
-
-            dropImgsl.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    SubcategoryModel categoryModel = subcategoryModelList.get(getAdapterPosition());
-                    categoryModel.setExpanded(!categoryModel.isExpanded());
-                    notifyItemChanged(getAdapterPosition());
-
-                }
-            });
+            productRv = itemView.findViewById(R.id.subCategoryRvsl);
 
         }
     }

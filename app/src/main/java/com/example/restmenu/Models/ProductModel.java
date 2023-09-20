@@ -6,13 +6,22 @@ public class ProductModel {
     private String productName;
     private String productDesc;
     private String productImage;
-    private double productPrice;
+    private int productPrice;
     private boolean isVeg;
     private boolean inStock;
-    private double displayPrice;
+    private int displayPrice;
     private boolean hasCustomization;
     private boolean hasAddOn;
 
+    private boolean expanded;
+
+    public boolean isExpanded() {
+        return expanded;
+    }
+
+    public void setExpanded(boolean expanded) {
+        this.expanded = expanded;
+    }
     public String getProductId() {
         return productId;
     }
@@ -45,11 +54,11 @@ public class ProductModel {
         this.productImage = productImage;
     }
 
-    public double getProductPrice() {
+    public int getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(double productPrice) {
+    public void setProductPrice(int productPrice) {
         this.productPrice = productPrice;
     }
 
@@ -73,7 +82,7 @@ public class ProductModel {
         return displayPrice;
     }
 
-    public void setDisplayPrice(double displayPrice) {
+    public void setDisplayPrice(int displayPrice) {
         this.displayPrice = displayPrice;
     }
 

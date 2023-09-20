@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="5dp"
+        app:cardCornerRadius="8dp"
         android:padding="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,11 +26,12 @@
                 android:background="?attr/selectableItemBackground"
                 android:padding="16dp"
                 android:text="Category Name"
+                android:textColor="@color/black"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/dropImgcl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

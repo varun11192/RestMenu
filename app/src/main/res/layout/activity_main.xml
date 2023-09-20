@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/green"
+    android:background="#FFBB91"
     tools:context=".MainActivity">
 
 
@@ -16,13 +16,14 @@
             android:layout_height="wrap_content"
             android:elevation="10dp"
             android:layout_margin="32dp"
+            android:background="#F6F6F6"
             >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-
+                android:background="#F6F6F6"
                 >
 
            <TextView

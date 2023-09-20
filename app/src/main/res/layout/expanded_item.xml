@@ -30,7 +30,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
+            <TextView
+                android:id="@+id/priceTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price"
+                android:layout_marginRight="16dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/dishName"
+                app:layout_constraintEnd_toStartOf="@+id/dropImgcl"
+                app:layout_constraintTop_toTopOf="@id/dishName" />
+
+            <ImageView
                 android:id="@+id/dropImgcl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -66,7 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="Customizable"
+                    android:text="false"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     app:layout_constraintEnd_toEndOf="@id/inStockTv"
                     app:layout_constraintTop_toBottomOf="@id/inStockTv" />
@@ -76,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="Has AddOn"
+                    android:text="false"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     app:layout_constraintEnd_toEndOf="@id/hasCustom"
                     app:layout_constraintTop_toBottomOf="@id/hasCustom" />
@@ -87,6 +99,46 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="8dp"
+                    android:text="Is Veg"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="64dp"
+                    android:text="In Stock"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    app:layout_constraintEnd_toEndOf="@id/isVegTv"
+                    app:layout_constraintTop_toBottomOf="@id/isVegTv" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="64dp"
+                    android:text="Customizable"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    app:layout_constraintEnd_toEndOf="@id/inStockTv"
+                    app:layout_constraintTop_toBottomOf="@id/inStockTv" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="64dp"
+                    android:text="Has AddOn"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    app:layout_constraintEnd_toEndOf="@id/hasCustom"
+                    app:layout_constraintTop_toBottomOf="@id/hasCustom" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="72dp"
                     android:text="Is Veg"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -110,17 +162,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/hasAddOn" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/priceTv"
-                android:layout_width="37dp"
-                android:layout_height="18dp"
-                android:text="Price"
-                android:layout_marginLeft="16dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@id/dishName"
-                app:layout_constraintStart_toEndOf="@+id/dishName"
-                app:layout_constraintTop_toTopOf="@id/dishName" />
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

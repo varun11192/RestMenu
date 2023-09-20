@@ -1,11 +1,14 @@
 package com.example.restmenu.Models;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class SubcategoryModel {
     private String categoryId;
     private String subcategoryId;
-    private static String subcategoryName;
+    @SerializedName("categoryName")
+    private String subcategoryName;
     private boolean hasProduct;
     private String categoryImage;
     private int itemCount;
@@ -46,13 +49,15 @@ public class SubcategoryModel {
         this.subcategoryId = subcategoryId;
     }
 
-    public static String getSubcategoryName() {
+    public  String getSubcategoryName() {
         return subcategoryName;
     }
 
     public void setSubcategoryName(String subcategoryName) {
         this.subcategoryName = subcategoryName;
     }
+
+
 
     public boolean isHasProduct() {
         return hasProduct;
