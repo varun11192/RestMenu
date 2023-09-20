@@ -1,6 +1,5 @@
 package com.example.restmenu;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,8 +61,8 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MovieVH> {
 
             dishNameTextView = itemView.findViewById(R.id.dishName);
             priceTextView = itemView.findViewById(R.id.priceTv);
-            expandableLayout = itemView.findViewById(R.id.expandableLayout);
-            dropImg = itemView.findViewById(R.id.dropImg);
+            expandableLayout = itemView.findViewById(R.id.expandableLayoutcl);
+            dropImg = itemView.findViewById(R.id.dropImgcl);
 
 
             dropImg.setOnClickListener(new View.OnClickListener() {

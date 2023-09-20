@@ -92,4 +92,20 @@ public class ProductModel {
     public void setHasAddOn(boolean hasAddOn) {
         this.hasAddOn = hasAddOn;
     }
+
+    @Override
+    public String toString() {
+        return "ProductModel{" +
+                "productId='" + productId + '\'' +
+                ", productName='" + productName + '\'' +
+                ", productDesc='" + productDesc + '\'' +
+                ", productImage='" + productImage + '\'' +
+                ", productPrice=" + productPrice +
+                ", isVeg=" + isVeg +
+                ", inStock=" + inStock +
+                ", displayPrice=" + displayPrice +
+                ", hasCustomization=" + hasCustomization +
+                ", hasAddOn=" + hasAddOn +
+                '}';
+    }
 }

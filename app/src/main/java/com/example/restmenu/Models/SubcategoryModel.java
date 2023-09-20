@@ -5,11 +5,30 @@ import java.util.List;
 public class SubcategoryModel {
     private String categoryId;
     private String subcategoryId;
-    private String subcategoryName;
+    private static String subcategoryName;
     private boolean hasProduct;
     private String categoryImage;
     private int itemCount;
     private List<ProductModel> productList;
+    private boolean expanded;
+
+    public SubcategoryModel(String categoryId, String subcategoryId, String subcategoryName, boolean hasProduct, String categoryImage, int itemCount, List<ProductModel> productList, boolean expanded) {
+        this.categoryId = categoryId;
+        this.subcategoryId = subcategoryId;
+        this.subcategoryName = subcategoryName;
+        this.hasProduct = hasProduct;
+        this.categoryImage = categoryImage;
+        this.itemCount = itemCount;
+        this.productList = productList;
+        this.expanded = expanded;
+    }
+
+    public void     setExpanded(boolean expanded) {
+        this.expanded = expanded;
+    }
+    public boolean isExpanded() {
+        return expanded;
+    }
 
     public String getCategoryId() {
         return categoryId;
@@ -27,7 +46,7 @@ public class SubcategoryModel {
         this.subcategoryId = subcategoryId;
     }
 
-    public String getSubcategoryName() {
+    public static String getSubcategoryName() {
         return subcategoryName;
     }
 
@@ -65,5 +84,19 @@ public class SubcategoryModel {
 
     public void setProductList(List<ProductModel> productList) {
         this.productList = productList;
+    }
+
+    @Override
+    public String toString() {
+        return "SubcategoryModel{" +
+                "categoryId='" + categoryId + '\'' +
+                ", subcategoryId='" + subcategoryId + '\'' +
+                ", subcategoryName='" + subcategoryName + '\'' +
+                ", hasProduct=" + hasProduct +
+                ", categoryImage='" + categoryImage + '\'' +
+                ", itemCount=" + itemCount +
+                ", productList=" + productList +
+                ", expanded=" + expanded +
+                '}';
     }
 }

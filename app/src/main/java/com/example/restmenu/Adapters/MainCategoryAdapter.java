@@ -1,7 +1,6 @@
 package com.example.restmenu.Adapters;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,17 +8,18 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.restmenu.Item;
 import com.example.restmenu.Models.CategoryModel;
-import com.example.restmenu.Models.YourResponseModel;
 import com.example.restmenu.R;
 
 import java.util.List;
 
 public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapter.MainCategoryViewHolder> {
 
-    private List<CategoryModel> mainCategories;
+    static List<CategoryModel> mainCategories;
 
 
     private LayoutInflater inflater;
@@ -42,17 +42,12 @@ public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapte
     public void onBindViewHolder(@NonNull MainCategoryViewHolder holder, int position) {
         CategoryModel categoryModel = mainCategories.get(position);
 
-        // Set the data for the main category item
         holder.categoryNameTextView.setText(categoryModel.getCategoryName());
 
-        // You can also set an OnClickListener for each main category item if needed
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Handle item click here
-                // You can navigate to subcategories or perform some action
-            }
-        });
+        boolean isExpanded = mainCategories.get(position).isExpanded();
+        holder.expandableLayout.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+
+
     }
 
     @Override
@@ -65,13 +60,29 @@ public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapte
     }
 
 
-    static class MainCategoryViewHolder extends RecyclerView.ViewHolder {
+    class MainCategoryViewHolder extends RecyclerView.ViewHolder {
         TextView categoryNameTextView;
+        ConstraintLayout expandableLayout;
+        ImageButton dropImg;
+
 
         public MainCategoryViewHolder(@NonNull View itemView) {
             super(itemView);
             categoryNameTextView = itemView.findViewById(R.id.categoryName);
-            // Initialize other views if necessary
+            expandableLayout = itemView.findViewById(R.id.expandableLayoutcl);
+            dropImg = itemView.findViewById(R.id.dropImgcl);
+            dropImg.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    CategoryModel categoryModel = mainCategories.get(getAdapterPosition());
+                    categoryModel.setExpanded(!categoryModel.isExpanded());
+                    notifyItemChanged(getAdapterPosition());
+
+                }
+            });
+
+
         }
     }
 }

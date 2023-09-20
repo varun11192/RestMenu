@@ -31,17 +31,17 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/dropImg"
+                android:id="@+id/dropImgcl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/baseline_arrow_drop_down_24"
                 android:layout_marginRight="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/expandableLayout"
+                app:layout_constraintBottom_toTopOf="@+id/expandableLayoutcl"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/expandableLayout"
+                android:id="@+id/expandableLayoutcl"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:visibility="visible"
