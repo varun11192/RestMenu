@@ -37,7 +37,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MenuVH> 
 
         ProductModel item = menuList.get(position);
         holder.dishNameTextView.setText(item.getProductName());
-        //holder.priceTextView.setText(item.getProductPrice());
         holder.isVeg.setText(item.isVeg() ? "true" : "false");
         holder.inStock.setText(item.isInStock() ? "true" : "false");
         holder.hasCustom.setText(item.isHasCustomization() ? "true" : "false");
